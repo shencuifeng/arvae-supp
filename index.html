@@ -28,11 +28,10 @@ footer{margin-top:40px;color:#adb5bd;font-size:.8rem;text-align:center}
 <body>
 <div class="container">
 <h1>ARVAE Supplementary Visual Results</h1>
-<p class="subtitle">Temporal-Spatial Disentanglement Verification across Two Model Configurations</p>
+<p class="subtitle">Temporal-Spatial Disentanglement Verification — 8× Downsampling (C1=2, C2=2)</p>
 <h2>Zero-Out Test</h2>
 <p class="section-desc">Each branch latent is independently zeroed out. <strong>Normal</strong> = full reconstruction; <strong>Zero Temporal</strong> = temporal branch zeroed; <strong>Zero Spatial</strong> = spatial branch zeroed.</p>
 <h3>videoSRC05</h3>
-<h4><span class="model-tag">8x/C4</span></h4>
 <div class="video-grid">
   <div class="video-card">
     <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/8x_ch4/videoSRC05/normal.mp4" type="video/mp4"></video>
@@ -47,23 +46,7 @@ footer{margin-top:40px;color:#adb5bd;font-size:.8rem;text-align:center}
     <div class="caption"><strong>Zero Spatial</strong></div>
   </div>
 </div>
-<h4><span class="model-tag">16x/C16</span></h4>
-<div class="video-grid">
-  <div class="video-card">
-    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/16x_ch16/videoSRC05/normal.mp4" type="video/mp4"></video>
-    <div class="caption"><strong>Normal</strong></div>
-  </div>
-  <div class="video-card">
-    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/16x_ch16/videoSRC05/zero_temporal.mp4" type="video/mp4"></video>
-    <div class="caption"><strong>Zero Temporal</strong></div>
-  </div>
-  <div class="video-card">
-    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/16x_ch16/videoSRC05/zero_spatial.mp4" type="video/mp4"></video>
-    <div class="caption"><strong>Zero Spatial</strong></div>
-  </div>
-</div>
 <h3>videoSRC07</h3>
-<h4><span class="model-tag">8x/C4</span></h4>
 <div class="video-grid">
   <div class="video-card">
     <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/8x_ch4/videoSRC07/normal.mp4" type="video/mp4"></video>
@@ -78,23 +61,7 @@ footer{margin-top:40px;color:#adb5bd;font-size:.8rem;text-align:center}
     <div class="caption"><strong>Zero Spatial</strong></div>
   </div>
 </div>
-<h4><span class="model-tag">16x/C16</span></h4>
-<div class="video-grid">
-  <div class="video-card">
-    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/16x_ch16/videoSRC07/normal.mp4" type="video/mp4"></video>
-    <div class="caption"><strong>Normal</strong></div>
-  </div>
-  <div class="video-card">
-    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/16x_ch16/videoSRC07/zero_temporal.mp4" type="video/mp4"></video>
-    <div class="caption"><strong>Zero Temporal</strong></div>
-  </div>
-  <div class="video-card">
-    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/16x_ch16/videoSRC07/zero_spatial.mp4" type="video/mp4"></video>
-    <div class="caption"><strong>Zero Spatial</strong></div>
-  </div>
-</div>
 <h3>videoSRC10</h3>
-<h4><span class="model-tag">8x/C4</span></h4>
 <div class="video-grid">
   <div class="video-card">
     <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/8x_ch4/videoSRC10/normal.mp4" type="video/mp4"></video>
@@ -109,39 +76,8 @@ footer{margin-top:40px;color:#adb5bd;font-size:.8rem;text-align:center}
     <div class="caption"><strong>Zero Spatial</strong></div>
   </div>
 </div>
-<h4><span class="model-tag">16x/C16</span></h4>
-<div class="video-grid">
-  <div class="video-card">
-    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/16x_ch16/videoSRC10/normal.mp4" type="video/mp4"></video>
-    <div class="caption"><strong>Normal</strong></div>
-  </div>
-  <div class="video-card">
-    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/16x_ch16/videoSRC10/zero_temporal.mp4" type="video/mp4"></video>
-    <div class="caption"><strong>Zero Temporal</strong></div>
-  </div>
-  <div class="video-card">
-    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/16x_ch16/videoSRC10/zero_spatial.mp4" type="video/mp4"></video>
-    <div class="caption"><strong>Zero Spatial</strong></div>
-  </div>
-</div>
-<h4><span class="model-tag">32x/C16</span></h4>
-<div class="video-grid">
-  <div class="video-card">
-    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/32x_ch16/videoSRC10/normal.mp4" type="video/mp4"></video>
-    <div class="caption"><strong>Normal</strong></div>
-  </div>
-  <div class="video-card">
-    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/32x_ch16/videoSRC10/zero_temporal.mp4" type="video/mp4"></video>
-    <div class="caption"><strong>Zero Temporal</strong></div>
-  </div>
-  <div class="video-card">
-    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/32x_ch16/videoSRC10/zero_spatial.mp4" type="video/mp4"></video>
-    <div class="caption"><strong>Zero Spatial</strong></div>
-  </div>
-</div>
 <h2>Latent Swap Test</h2>
 <p class="section-desc">Temporal and spatial latents are swapped between two videos. <strong>Swap Temporal</strong> = temporal latent from video B, spatial from video A; <strong>Swap Spatial</strong> = spatial latent from video B, temporal from video A.</p>
-<h4><span class="model-tag">8x/C4</span></h4>
 <div class="swap-grid">
   <div class="video-card">
     <video controls loop muted preload="metadata"><source src="2_latent_swap_test/videos/8x_ch4/swap_temporal.mp4" type="video/mp4"></video>
@@ -149,17 +85,6 @@ footer{margin-top:40px;color:#adb5bd;font-size:.8rem;text-align:center}
   </div>
   <div class="video-card">
     <video controls loop muted preload="metadata"><source src="2_latent_swap_test/videos/8x_ch4/swap_spatial.mp4" type="video/mp4"></video>
-    <div class="caption"><strong>Swap Spatial</strong></div>
-  </div>
-</div>
-<h4><span class="model-tag">16x/C16</span></h4>
-<div class="swap-grid">
-  <div class="video-card">
-    <video controls loop muted preload="metadata"><source src="2_latent_swap_test/videos/16x_ch16/swap_temporal.mp4" type="video/mp4"></video>
-    <div class="caption"><strong>Swap Temporal</strong></div>
-  </div>
-  <div class="video-card">
-    <video controls loop muted preload="metadata"><source src="2_latent_swap_test/videos/16x_ch16/swap_spatial.mp4" type="video/mp4"></video>
     <div class="caption"><strong>Swap Spatial</strong></div>
   </div>
 </div>
