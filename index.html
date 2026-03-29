@@ -16,6 +16,8 @@ p{font-size:.95rem;color:#495057;margin-bottom:12px}
 .subtitle{color:#6c757d;font-size:1rem;margin-bottom:24px}
 .video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:12px 0 24px}
 .swap-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:12px 0 24px}
+.video-grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:12px 0 24px}
+.video-grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:12px 0 24px}
 .video-card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.08)}
 .video-card video{width:100%;display:block}
 .video-card .caption{padding:8px 12px;font-size:.85rem;color:#495057}
@@ -28,7 +30,7 @@ footer{margin-top:40px;color:#adb5bd;font-size:.8rem;text-align:center}
 <body>
 <div class="container">
 <h1>ARVAE Supplementary Visual Results</h1>
-<p class="subtitle">Temporal-Spatial Disentanglement Verification — 8× Downsampling (C1=2, C2=2)</p>
+<p class="subtitle">Supplementary Video Results — Reconstruction, Disentanglement Verification &amp; Generation</p>
 <h2>Zero-Out Test</h2>
 <p class="section-desc">Each branch latent is independently zeroed out. <strong>Normal</strong> = full reconstruction; <strong>Zero Temporal</strong> = temporal branch zeroed; <strong>Zero Spatial</strong> = spatial branch zeroed.</p>
 <h3>videoSRC05</h3>
@@ -88,6 +90,298 @@ footer{margin-top:40px;color:#adb5bd;font-size:.8rem;text-align:center}
     <div class="caption"><strong>Swap Spatial</strong></div>
   </div>
 </div>
+<h2>ARVAE 8× Reconstructed Samples</h2>
+<p class="section-desc">Comparison of 8× temporal downsampling reconstruction results across different methods.</p>
+
+<h3>Clip 1</h3>
+<div class="video-grid-5">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/8x%20video%20results/clip1/groundtruth.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Ground Truth</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/8x%20video%20results/clip1/ARVAE(ours)_1.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>ARVAE (Ours)</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/8x%20video%20results/clip1/cogvideox.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>CogVideoX</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/8x%20video%20results/clip1/videovaeplus.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>VideoVAEPlus</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/8x%20video%20results/clip1/vidtok-kl.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>VidTok-KL</strong></div>
+  </div>
+</div>
+
+<h3>Clip 2</h3>
+<div class="video-grid-5">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/8x%20video%20results/clip2/groundtruth.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Ground Truth</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/8x%20video%20results/clip2/ARVAE(ours)_2.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>ARVAE (Ours)</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/8x%20video%20results/clip2/cogvideox_2.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>CogVideoX</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/8x%20video%20results/clip2/videvaeplus_2.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>VideoVAEPlus</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/8x%20video%20results/clip2/vidtok_2.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>VidTok</strong></div>
+  </div>
+</div>
+
+<h3>Clip 3</h3>
+<div class="video-grid-5">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/8x%20video%20results/clip3/groundtruth.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Ground Truth</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/8x%20video%20results/clip3/ARVAE(ours)_3.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>ARVAE (Ours)</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/8x%20video%20results/clip3/cogvideox_3.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>CogVideoX</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/8x%20video%20results/clip3/videovaeplus_3.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>VideoVAEPlus</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/8x%20video%20results/clip3/vidtok_3.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>VidTok</strong></div>
+  </div>
+</div>
+
+<h3>Clip 4</h3>
+<div class="video-grid-5">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/8x%20video%20results/clip4/groundtruth.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Ground Truth</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/8x%20video%20results/clip4/ARVAE(ours)_4.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>ARVAE (Ours)</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/8x%20video%20results/clip4/cogvideox_4.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>CogVideoX</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/8x%20video%20results/clip4/videovaeplus_4.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>VideoVAEPlus</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/8x%20video%20results/clip4/vidtok_4.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>VidTok</strong></div>
+  </div>
+</div>
+
+<h2>ARVAE 16× Reconstructed Samples</h2>
+<p class="section-desc">Comparison of 16× temporal downsampling reconstruction results across different methods.</p>
+
+<h3>Clip 1</h3>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/16x%20video%20results/clip1/groundtruth.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Ground Truth</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/16x%20video%20results/clip1/ARVAE(ours).mp4" type="video/mp4"></video>
+    <div class="caption"><strong>ARVAE (Ours)</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/16x%20video%20results/clip1/stepvideo.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>StepVideo</strong></div>
+  </div>
+</div>
+
+<h3>Clip 2</h3>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/16x%20video%20results/clip2/groundtruth.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Ground Truth</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/16x%20video%20results/clip2/ARVAE(ours).mp4" type="video/mp4"></video>
+    <div class="caption"><strong>ARVAE (Ours)</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/16x%20video%20results/clip2/stepvideo.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>StepVideo</strong></div>
+  </div>
+</div>
+
+<h3>Clip 3</h3>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/16x%20video%20results/clip3/groundtruth.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Ground Truth</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/16x%20video%20results/clip3/ARVAE(ours).mp4" type="video/mp4"></video>
+    <div class="caption"><strong>ARVAE (Ours)</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/16x%20video%20results/clip3/stepvideo.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>StepVideo</strong></div>
+  </div>
+</div>
+
+<h3>Clip 4</h3>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/16x%20video%20results/clip4/groundtruth.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Ground Truth</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/16x%20video%20results/clip4/ARVAE(ours).mp4" type="video/mp4"></video>
+    <div class="caption"><strong>ARVAE (Ours)</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/16x%20video%20results/clip4/step_4.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>StepVideo</strong></div>
+  </div>
+</div>
+
+<h3>Clip 5</h3>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/16x%20video%20results/clip5/gt.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Ground Truth</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/16x%20video%20results/clip5/ARVAE(ours).mp4" type="video/mp4"></video>
+    <div class="caption"><strong>ARVAE (Ours)</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/16x%20video%20results/clip5/step.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>StepVideo</strong></div>
+  </div>
+</div>
+
+<h2>ARVAE 32× Reconstructed Samples</h2>
+<p class="section-desc">Comparison of 32× temporal downsampling reconstruction results across different methods.</p>
+
+<h3>Clip 1</h3>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/32x%20video%20results/clip1/groundtruth.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Ground Truth</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/32x%20video%20results/clip1/ARVAE(ours).mp4" type="video/mp4"></video>
+    <div class="caption"><strong>ARVAE (Ours)</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/32x%20video%20results/clip1/ltx.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>LTX</strong></div>
+  </div>
+</div>
+
+<h3>Clip 2</h3>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/32x%20video%20results/clip2/groundtruth.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Ground Truth</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/32x%20video%20results/clip2/ARVAE(ours).mp4" type="video/mp4"></video>
+    <div class="caption"><strong>ARVAE (Ours)</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/32x%20video%20results/clip2/ltx.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>LTX</strong></div>
+  </div>
+</div>
+
+<h3>Clip 3</h3>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/32x%20video%20results/clip3/groundtruth.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Ground Truth</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/32x%20video%20results/clip3/ARVAE(ours).mp4" type="video/mp4"></video>
+    <div class="caption"><strong>ARVAE (Ours)</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/32x%20video%20results/clip3/ltx.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>LTX</strong></div>
+  </div>
+</div>
+
+<h3>Clip 4</h3>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/32x%20video%20results/clip4/groundtruth.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Ground Truth</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/32x%20video%20results/clip4/ARVAE(ours).mp4" type="video/mp4"></video>
+    <div class="caption"><strong>ARVAE (Ours)</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/32x%20video%20results/clip4/ltx_4.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>LTX</strong></div>
+  </div>
+</div>
+
+<h2>Generated Samples</h2>
+<p class="section-desc">Unconditional video generation results on Sky and Taichi datasets.</p>
+
+<h3>Sky</h3>
+<div class="video-grid-4">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/generation%20video%20results/sky/ours.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>ARVAE (Ours)</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/generation%20video%20results/sky/ours1.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>ARVAE (Ours) #2</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/generation%20video%20results/sky/ours2.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>ARVAE (Ours) #3</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/generation%20video%20results/sky/digan%28Comparison%20method%EF%BC%89.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>DIGAN</strong></div>
+  </div>
+</div>
+
+<h3>Taichi</h3>
+<div class="video-grid-4">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/generation%20video%20results/Taichi/ours.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>ARVAE (Ours)</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/generation%20video%20results/Taichi/ours1.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>ARVAE (Ours) #2</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/generation%20video%20results/Taichi/digan%EF%BC%88Comparison%20method%EF%BC%89.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>DIGAN</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="iclr_video/generation%20video%20results/Taichi/diagn1%EF%BC%88Comparison%20method%EF%BC%89.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>DIGAN #2</strong></div>
+  </div>
+</div>
+
 <footer>Anonymous supplementary material</footer>
 </div>
 </body>
