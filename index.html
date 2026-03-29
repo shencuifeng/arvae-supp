@@ -3,142 +3,208 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ARVAE — Supplementary Experiment Results</title>
-
+<title>ARVAE Supplementary Visual Results</title>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-         background: #f8f9fa; color: #212529; line-height: 1.6; }
-  .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-  h1 { font-size: 1.8rem; margin-bottom: 8px; color: #1a1a2e; }
-  h2 { font-size: 1.4rem; margin: 30px 0 12px; color: #16213e;
-       border-bottom: 2px solid #e2e8f0; padding-bottom: 6px; }
-  h3 { font-size: 1.15rem; margin: 20px 0 8px; color: #0f3460; }
-  p, li { font-size: 0.95rem; color: #495057; }
-  a { color: #2563eb; text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  .subtitle { color: #6c757d; font-size: 1rem; margin-bottom: 24px; }
-  .card { background: #fff; border-radius: 8px; padding: 20px;
-          margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
-  .card h3 { margin-top: 0; }
-  .nav { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
-  .nav a { background: #2563eb; color: #fff; padding: 8px 18px;
-           border-radius: 6px; font-weight: 500; font-size: 0.9rem; }
-  .nav a:hover { background: #1d4ed8; text-decoration: none; }
-  table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: 0.88rem; }
-  th, td { border: 1px solid #dee2e6; padding: 8px 12px; text-align: center; }
-  th { background: #e9ecef; font-weight: 600; }
-  tr:nth-child(even) { background: #f8f9fa; }
-  .highlight { font-weight: 700; color: #059669; }
-  .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-                gap: 16px; margin: 16px 0; }
-  .video-card { background: #fff; border-radius: 8px; overflow: hidden;
-                box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
-  .video-card video { width: 100%; display: block; }
-  .video-card .caption { padding: 8px 12px; font-size: 0.85rem; color: #495057; }
-  .video-card .caption strong { color: #212529; }
-  .back { display: inline-block; margin-bottom: 16px; font-size: 0.9rem; }
-  .tag { display: inline-block; background: #dbeafe; color: #1e40af;
-         padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; margin-right: 4px; }
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#f8f9fa;color:#212529;line-height:1.6}
+.container{max-width:1400px;margin:0 auto;padding:20px}
+h1{font-size:1.8rem;margin-bottom:8px;color:#1a1a2e}
+h2{font-size:1.4rem;margin:36px 0 12px;color:#16213e;border-bottom:2px solid #e2e8f0;padding-bottom:6px}
+h3{font-size:1.15rem;margin:24px 0 8px;color:#0f3460}
+h4{font-size:1rem;margin:16px 0 6px;color:#334155}
+p{font-size:.95rem;color:#495057;margin-bottom:12px}
+.subtitle{color:#6c757d;font-size:1rem;margin-bottom:24px}
+.video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:12px 0 24px}
+.swap-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:12px 0 24px}
+.video-card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.video-card video{width:100%;display:block}
+.video-card .caption{padding:8px 12px;font-size:.85rem;color:#495057}
+.video-card .caption strong{color:#212529}
+.model-tag{display:inline-block;background:#dbeafe;color:#1e40af;padding:2px 10px;border-radius:4px;font-size:.82rem;font-weight:600;margin-right:6px}
+.section-desc{font-size:.92rem;color:#64748b;margin-bottom:16px}
+footer{margin-top:40px;color:#adb5bd;font-size:.8rem;text-align:center}
 </style>
-
 </head>
 <body>
 <div class="container">
-<h1>ARVAE — Supplementary Experiment Results</h1>
-<p class="subtitle">Disentanglement Verification &amp; Failure Mode Analysis across three model configurations</p>
-
-<div class="nav">
-  <a href="1_zero_out_test/index.html">Exp 1: Zero-Out Test</a>
-  <a href="2_latent_swap_test/index.html">Exp 2: Latent Swap Test</a>
-  <a href="3_failure_modes/index.html">Exp 3: Failure Mode Analysis</a>
+<h1>ARVAE Supplementary Visual Results</h1>
+<p class="subtitle">Temporal-Spatial Disentanglement Verification across Three Model Configurations</p>
+<h2>Zero-Out Test</h2>
+<p class="section-desc">Each branch latent is independently zeroed out. <strong>Normal</strong> = full reconstruction; <strong>Zero Temporal</strong> = temporal branch zeroed; <strong>Zero Spatial</strong> = spatial branch zeroed.</p>
+<h3>videoSRC05</h3>
+<h4><span class="model-tag">8x/C4</span></h4>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/8x_ch4/videoSRC05/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Normal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/8x_ch4/videoSRC05/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Zero Temporal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/8x_ch4/videoSRC05/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Zero Spatial</strong></div>
+  </div>
 </div>
-
-<div class="card">
-<h3>Overview</h3>
-<p>We evaluate three ARVAE configurations on the MCL-JCV dataset to verify temporal–spatial disentanglement and analyze failure modes:</p>
-<ul style="margin: 8px 0 0 20px;">
-  <li><strong>8×/C4</strong> — 8× downscale, 2 temporal + 2 spatial channels</li>
-  <li><strong>16×/C16</strong> — 16× downscale, 2 temporal + 14 spatial channels</li>
-  <li><strong>32×/C16</strong> — 32× downscale, 2 temporal + 14 spatial channels</li>
-</ul>
+<h4><span class="model-tag">16x/C16</span></h4>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/16x_ch16/videoSRC05/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Normal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/16x_ch16/videoSRC05/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Zero Temporal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/16x_ch16/videoSRC05/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Zero Spatial</strong></div>
+  </div>
 </div>
-
-<h2>Part 1: Disentanglement Verification</h2>
-
-<div class="card">
-<h3>Experiment 1: Latent Zero-Out Test</h3>
-<p>We independently zero out each branch's latent and measure PSNR to quantify each branch's unique contribution.</p>
-<table>
-<tr><th>Model</th><th>Normal PSNR</th><th>Zero-Temporal</th><th>Zero-Spatial</th><th>Temporal Drop</th><th>Spatial Drop</th></tr>
-<tr><td>8×/C4</td><td>31.36 dB</td><td>12.08 dB</td><td>27.61 dB</td><td class="highlight">−19.28 dB</td><td>−3.75 dB</td></tr>
-<tr><td>16×/C16</td><td>32.67 dB</td><td>27.11 dB</td><td>14.24 dB</td><td>−5.56 dB</td><td class="highlight">−18.43 dB</td></tr>
-<tr><td>32×/C16</td><td>27.54 dB</td><td>24.62 dB</td><td>15.47 dB</td><td>−2.92 dB</td><td class="highlight">−12.08 dB</td></tr>
-</table>
-<p>→ <a href="1_zero_out_test/index.html">View video comparisons</a></p>
+<h4><span class="model-tag">32x/C16</span></h4>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/32x_ch16/videoSRC05/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Normal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/32x_ch16/videoSRC05/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Zero Temporal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/32x_ch16/videoSRC05/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Zero Spatial</strong></div>
+  </div>
 </div>
-
-<div class="card">
-<h3>Experiment 2: Cross-Branch Cosine Similarity</h3>
-<p>Cross-branch cosine similarity ≈ 0 confirms orthogonal subspaces (statistical independence).</p>
-<table>
-<tr><th>Model</th><th>Temporal Consec. Sim.</th><th>Spatial Consec. Sim.</th><th>Cross-Branch Sim.</th></tr>
-<tr><td>8×/C4</td><td>0.862</td><td>0.046</td><td class="highlight">−0.047</td></tr>
-<tr><td>16×/C16</td><td>0.624</td><td>0.649</td><td class="highlight">−0.002</td></tr>
-<tr><td>32×/C16</td><td>0.793</td><td>0.800</td><td class="highlight">−0.006</td></tr>
-</table>
+<h3>videoSRC07</h3>
+<h4><span class="model-tag">8x/C4</span></h4>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/8x_ch4/videoSRC07/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Normal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/8x_ch4/videoSRC07/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Zero Temporal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/8x_ch4/videoSRC07/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Zero Spatial</strong></div>
+  </div>
 </div>
-
-<div class="card">
-<h3>Experiment 3: Latent Swap Test</h3>
-<p>Swap temporal/spatial latents between two videos and measure PSNR against both ground truths.</p>
-<table>
-<tr><th>Condition</th><th>8×/C4</th><th>16×/C16</th><th>32×/C16</th><th>Interpretation</th></tr>
-<tr><td>Normal A → GT_A</td><td>28.34 dB</td><td>29.09 dB</td><td>22.42 dB</td><td>Baseline</td></tr>
-<tr><td>Swap-Temporal → GT_A</td><td>13.70 dB</td><td class="highlight">21.25 dB</td><td class="highlight">18.42 dB</td><td>Appearance retention</td></tr>
-<tr><td>Swap-Temporal → GT_B</td><td>9.66 dB</td><td>7.29 dB</td><td>7.26 dB</td><td>Motion transfer</td></tr>
-<tr><td>Swap-Spatial → GT_A</td><td>20.92 dB</td><td>7.35 dB</td><td>7.71 dB</td><td>Motion retention</td></tr>
-<tr><td>Swap-Spatial → GT_B</td><td>7.16 dB</td><td class="highlight">17.44 dB</td><td class="highlight">19.88 dB</td><td>Appearance transfer</td></tr>
-</table>
-<p>→ <a href="2_latent_swap_test/index.html">View swap videos</a></p>
+<h4><span class="model-tag">16x/C16</span></h4>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/16x_ch16/videoSRC07/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Normal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/16x_ch16/videoSRC07/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Zero Temporal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/16x_ch16/videoSRC07/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Zero Spatial</strong></div>
+  </div>
 </div>
-
-<h2>Part 2: Failure Mode Analysis</h2>
-
-<div class="card">
-<h3>Error Accumulation</h3>
-<table>
-<tr><th>Model</th><th>Degradation Rate</th><th>Total Drop (15 frames)</th><th>First Frame</th><th>Last Frame</th></tr>
-<tr><td>8×/C4</td><td>0.668 dB/frame</td><td>9.36 dB</td><td>~31 dB</td><td>~22 dB</td></tr>
-<tr><td>16×/C16</td><td class="highlight">0.462 dB/frame</td><td class="highlight">6.47 dB</td><td>~33 dB</td><td>~26 dB</td></tr>
-<tr><td>32×/C16</td><td>0.597 dB/frame</td><td>8.36 dB</td><td>~28 dB</td><td>~19 dB</td></tr>
-</table>
+<h4><span class="model-tag">32x/C16</span></h4>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/32x_ch16/videoSRC07/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Normal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/32x_ch16/videoSRC07/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Zero Temporal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/32x_ch16/videoSRC07/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Zero Spatial</strong></div>
+  </div>
 </div>
-
-<div class="card">
-<h3>Motion Sensitivity</h3>
-<table>
-<tr><th>Model</th><th>No Noise</th><th>0.5× σ</th><th>1.0× σ</th><th>2.0× σ</th><th>Drop (0→2×)</th></tr>
-<tr><td>8×/C4</td><td>28.12 dB</td><td>25.21 dB</td><td>21.62 dB</td><td>16.97 dB</td><td class="highlight">−11.15 dB</td></tr>
-<tr><td>16×/C16</td><td>29.51 dB</td><td>27.65 dB</td><td>25.12 dB</td><td>22.48 dB</td><td>−7.03 dB</td></tr>
-<tr><td>32×/C16</td><td>24.05 dB</td><td>23.26 dB</td><td>22.47 dB</td><td>21.78 dB</td><td class="highlight">−2.27 dB</td></tr>
-</table>
+<h3>videoSRC10</h3>
+<h4><span class="model-tag">8x/C4</span></h4>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/8x_ch4/videoSRC10/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Normal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/8x_ch4/videoSRC10/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Zero Temporal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/8x_ch4/videoSRC10/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Zero Spatial</strong></div>
+  </div>
 </div>
-
-<div class="card">
-<h3>Scene Change Robustness</h3>
-<table>
-<tr><th>Model</th><th>PSNR Before Cut</th><th>PSNR After Cut</th><th>Change</th><th>Recovery</th></tr>
-<tr><td>8×/C4</td><td>26.81 dB</td><td>26.25 dB</td><td>−0.56 dB</td><td class="highlight">Immediate (0 frames)</td></tr>
-<tr><td>16×/C16</td><td>25.12 dB</td><td>32.36 dB</td><td class="highlight">+7.24 dB</td><td class="highlight">Immediate (0 frames)</td></tr>
-<tr><td>32×/C16</td><td>19.48 dB</td><td>23.83 dB</td><td class="highlight">+4.34 dB</td><td class="highlight">Immediate (0 frames)</td></tr>
-</table>
-<p>→ <a href="3_failure_modes/index.html">Detailed analysis</a></p>
+<h4><span class="model-tag">16x/C16</span></h4>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/16x_ch16/videoSRC10/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Normal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/16x_ch16/videoSRC10/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Zero Temporal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/16x_ch16/videoSRC10/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Zero Spatial</strong></div>
+  </div>
 </div>
-
-<p style="margin-top: 30px; color: #adb5bd; font-size: 0.8rem; text-align: center;">
-  Anonymous supplementary material — do not distribute
-</p>
+<h4><span class="model-tag">32x/C16</span></h4>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/32x_ch16/videoSRC10/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Normal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/32x_ch16/videoSRC10/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Zero Temporal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="1_zero_out_test/videos/32x_ch16/videoSRC10/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Zero Spatial</strong></div>
+  </div>
+</div>
+<h2>Latent Swap Test</h2>
+<p class="section-desc">Temporal and spatial latents are swapped between two videos. <strong>Swap Temporal</strong> = temporal latent from video B, spatial from video A; <strong>Swap Spatial</strong> = spatial latent from video B, temporal from video A.</p>
+<h4><span class="model-tag">8x/C4</span></h4>
+<div class="swap-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="2_latent_swap_test/videos/8x_ch4/swap_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Swap Temporal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="2_latent_swap_test/videos/8x_ch4/swap_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Swap Spatial</strong></div>
+  </div>
+</div>
+<h4><span class="model-tag">16x/C16</span></h4>
+<div class="swap-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="2_latent_swap_test/videos/16x_ch16/swap_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Swap Temporal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="2_latent_swap_test/videos/16x_ch16/swap_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Swap Spatial</strong></div>
+  </div>
+</div>
+<h4><span class="model-tag">32x/C16</span></h4>
+<div class="swap-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="2_latent_swap_test/videos/32x_ch16/swap_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Swap Temporal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="2_latent_swap_test/videos/32x_ch16/swap_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>Swap Spatial</strong></div>
+  </div>
+</div>
+<footer>Anonymous supplementary material</footer>
 </div>
 </body>
 </html>
