@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experiment 1: Latent Zero-Out Test</title>
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+         background: #f8f9fa; color: #212529; line-height: 1.6; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+  h1 { font-size: 1.8rem; margin-bottom: 8px; color: #1a1a2e; }
+  h2 { font-size: 1.4rem; margin: 30px 0 12px; color: #16213e;
+       border-bottom: 2px solid #e2e8f0; padding-bottom: 6px; }
+  h3 { font-size: 1.15rem; margin: 20px 0 8px; color: #0f3460; }
+  p, li { font-size: 0.95rem; color: #495057; }
+  a { color: #2563eb; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .subtitle { color: #6c757d; font-size: 1rem; margin-bottom: 24px; }
+  .card { background: #fff; border-radius: 8px; padding: 20px;
+          margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+  .card h3 { margin-top: 0; }
+  .nav { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+  .nav a { background: #2563eb; color: #fff; padding: 8px 18px;
+           border-radius: 6px; font-weight: 500; font-size: 0.9rem; }
+  .nav a:hover { background: #1d4ed8; text-decoration: none; }
+  table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: 0.88rem; }
+  th, td { border: 1px solid #dee2e6; padding: 8px 12px; text-align: center; }
+  th { background: #e9ecef; font-weight: 600; }
+  tr:nth-child(even) { background: #f8f9fa; }
+  .highlight { font-weight: 700; color: #059669; }
+  .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 16px; margin: 16px 0; }
+  .video-card { background: #fff; border-radius: 8px; overflow: hidden;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+  .video-card video { width: 100%; display: block; }
+  .video-card .caption { padding: 8px 12px; font-size: 0.85rem; color: #495057; }
+  .video-card .caption strong { color: #212529; }
+  .back { display: inline-block; margin-bottom: 16px; font-size: 0.9rem; }
+  .tag { display: inline-block; background: #dbeafe; color: #1e40af;
+         padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; margin-right: 4px; }
+</style>
+
+</head>
+<body>
+<div class="container">
+<a class="back" href="../index.html">← Back to Overview</a>
+<h1>Experiment 1: Latent Zero-Out Test</h1>
+<p class="subtitle">Independently zero out each branch's latent to quantify unique contribution</p>
+
+<div class="card">
+<h3>Quantitative Results</h3>
+<table>
+<tr><th>Model</th><th>Normal PSNR</th><th>Zero-Temporal</th><th>Zero-Spatial</th><th>Temporal Drop</th><th>Spatial Drop</th></tr>
+<tr><td>8×/C4</td><td>31.36 dB</td><td>12.08 dB</td><td>27.61 dB</td><td class="highlight">−19.28 dB</td><td>−3.75 dB</td></tr>
+<tr><td>16×/C16</td><td>32.67 dB</td><td>27.11 dB</td><td>14.24 dB</td><td>−5.56 dB</td><td class="highlight">−18.43 dB</td></tr>
+<tr><td>32×/C16</td><td>27.54 dB</td><td>24.62 dB</td><td>15.47 dB</td><td>−2.92 dB</td><td class="highlight">−12.08 dB</td></tr>
+</table>
+<p><strong>Key finding:</strong> The two branches carry non-redundant, complementary information. In 8×/C4, the temporal branch dominates; in 16×/C16 and 32×/C16, the spatial branch dominates — governed by channel allocation.</p>
+</div>
+
+<h2>Video Comparisons (Representative Samples)</h2>
+<p>Each row shows: <span class="tag">Normal</span> <span class="tag">Zero Temporal</span> <span class="tag">Zero Spatial</span> for the same video across all three models.</p>
+
+<h3>videoSRC05</h3>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/8x_ch4/videoSRC05/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>8×/C4 — Normal</strong><br>Full reconstruction with both branches</div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/8x_ch4/videoSRC05/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>8×/C4 — Zero Temporal</strong><br>Temporal branch zeroed out</div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/8x_ch4/videoSRC05/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>8×/C4 — Zero Spatial</strong><br>Spatial branch zeroed out</div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/16x_ch16/videoSRC05/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>16×/C16 — Normal</strong><br>Full reconstruction with both branches</div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/16x_ch16/videoSRC05/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>16×/C16 — Zero Temporal</strong><br>Temporal branch zeroed out</div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/16x_ch16/videoSRC05/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>16×/C16 — Zero Spatial</strong><br>Spatial branch zeroed out</div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/32x_ch16/videoSRC05/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>32×/C16 — Normal</strong><br>Full reconstruction with both branches</div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/32x_ch16/videoSRC05/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>32×/C16 — Zero Temporal</strong><br>Temporal branch zeroed out</div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/32x_ch16/videoSRC05/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>32×/C16 — Zero Spatial</strong><br>Spatial branch zeroed out</div>
+  </div>
+</div>
+<h3>videoSRC06</h3>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/8x_ch4/videoSRC06/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>8×/C4 — Normal</strong><br>Full reconstruction with both branches</div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/8x_ch4/videoSRC06/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>8×/C4 — Zero Temporal</strong><br>Temporal branch zeroed out</div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/8x_ch4/videoSRC06/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>8×/C4 — Zero Spatial</strong><br>Spatial branch zeroed out</div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/16x_ch16/videoSRC06/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>16×/C16 — Normal</strong><br>Full reconstruction with both branches</div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/16x_ch16/videoSRC06/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>16×/C16 — Zero Temporal</strong><br>Temporal branch zeroed out</div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/16x_ch16/videoSRC06/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>16×/C16 — Zero Spatial</strong><br>Spatial branch zeroed out</div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/32x_ch16/videoSRC06/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>32×/C16 — Normal</strong><br>Full reconstruction with both branches</div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/32x_ch16/videoSRC06/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>32×/C16 — Zero Temporal</strong><br>Temporal branch zeroed out</div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/32x_ch16/videoSRC06/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>32×/C16 — Zero Spatial</strong><br>Spatial branch zeroed out</div>
+  </div>
+</div>
+<h3>videoSRC07</h3>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/8x_ch4/videoSRC07/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>8×/C4 — Normal</strong><br>Full reconstruction with both branches</div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/8x_ch4/videoSRC07/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>8×/C4 — Zero Temporal</strong><br>Temporal branch zeroed out</div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/8x_ch4/videoSRC07/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>8×/C4 — Zero Spatial</strong><br>Spatial branch zeroed out</div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/16x_ch16/videoSRC07/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>16×/C16 — Normal</strong><br>Full reconstruction with both branches</div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/16x_ch16/videoSRC07/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>16×/C16 — Zero Temporal</strong><br>Temporal branch zeroed out</div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/16x_ch16/videoSRC07/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>16×/C16 — Zero Spatial</strong><br>Spatial branch zeroed out</div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/32x_ch16/videoSRC07/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>32×/C16 — Normal</strong><br>Full reconstruction with both branches</div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/32x_ch16/videoSRC07/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>32×/C16 — Zero Temporal</strong><br>Temporal branch zeroed out</div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/32x_ch16/videoSRC07/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>32×/C16 — Zero Spatial</strong><br>Spatial branch zeroed out</div>
+  </div>
+</div>
+
+<h2>Additional Videos</h2>
+
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/8x_ch4/videoSRC09/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>8×/C4 — videoSRC09 Normal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/8x_ch4/videoSRC09/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>8×/C4 — videoSRC09 Zero Temporal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/8x_ch4/videoSRC09/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>8×/C4 — videoSRC09 Zero Spatial</strong></div>
+  </div>
+</div>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/8x_ch4/videoSRC10/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>8×/C4 — videoSRC10 Normal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/8x_ch4/videoSRC10/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>8×/C4 — videoSRC10 Zero Temporal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/8x_ch4/videoSRC10/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>8×/C4 — videoSRC10 Zero Spatial</strong></div>
+  </div>
+</div>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/8x_ch4/videoSRC14/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>8×/C4 — videoSRC14 Normal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/8x_ch4/videoSRC14/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>8×/C4 — videoSRC14 Zero Temporal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/8x_ch4/videoSRC14/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>8×/C4 — videoSRC14 Zero Spatial</strong></div>
+  </div>
+</div>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/8x_ch4/videoSRC18/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>8×/C4 — videoSRC18 Normal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/8x_ch4/videoSRC18/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>8×/C4 — videoSRC18 Zero Temporal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/8x_ch4/videoSRC18/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>8×/C4 — videoSRC18 Zero Spatial</strong></div>
+  </div>
+</div>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/8x_ch4/videoSRC22/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>8×/C4 — videoSRC22 Normal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/8x_ch4/videoSRC22/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>8×/C4 — videoSRC22 Zero Temporal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/8x_ch4/videoSRC22/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>8×/C4 — videoSRC22 Zero Spatial</strong></div>
+  </div>
+</div>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/8x_ch4/videoSRC23/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>8×/C4 — videoSRC23 Normal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/8x_ch4/videoSRC23/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>8×/C4 — videoSRC23 Zero Temporal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/8x_ch4/videoSRC23/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>8×/C4 — videoSRC23 Zero Spatial</strong></div>
+  </div>
+</div>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/16x_ch16/videoSRC09/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>16×/C16 — videoSRC09 Normal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/16x_ch16/videoSRC09/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>16×/C16 — videoSRC09 Zero Temporal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/16x_ch16/videoSRC09/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>16×/C16 — videoSRC09 Zero Spatial</strong></div>
+  </div>
+</div>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/16x_ch16/videoSRC10/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>16×/C16 — videoSRC10 Normal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/16x_ch16/videoSRC10/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>16×/C16 — videoSRC10 Zero Temporal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/16x_ch16/videoSRC10/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>16×/C16 — videoSRC10 Zero Spatial</strong></div>
+  </div>
+</div>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/16x_ch16/videoSRC14/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>16×/C16 — videoSRC14 Normal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/16x_ch16/videoSRC14/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>16×/C16 — videoSRC14 Zero Temporal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/16x_ch16/videoSRC14/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>16×/C16 — videoSRC14 Zero Spatial</strong></div>
+  </div>
+</div>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/16x_ch16/videoSRC18/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>16×/C16 — videoSRC18 Normal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/16x_ch16/videoSRC18/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>16×/C16 — videoSRC18 Zero Temporal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/16x_ch16/videoSRC18/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>16×/C16 — videoSRC18 Zero Spatial</strong></div>
+  </div>
+</div>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/16x_ch16/videoSRC22/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>16×/C16 — videoSRC22 Normal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/16x_ch16/videoSRC22/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>16×/C16 — videoSRC22 Zero Temporal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/16x_ch16/videoSRC22/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>16×/C16 — videoSRC22 Zero Spatial</strong></div>
+  </div>
+</div>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/16x_ch16/videoSRC23/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>16×/C16 — videoSRC23 Normal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/16x_ch16/videoSRC23/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>16×/C16 — videoSRC23 Zero Temporal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/16x_ch16/videoSRC23/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>16×/C16 — videoSRC23 Zero Spatial</strong></div>
+  </div>
+</div>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/32x_ch16/videoSRC09/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>32×/C16 — videoSRC09 Normal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/32x_ch16/videoSRC09/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>32×/C16 — videoSRC09 Zero Temporal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/32x_ch16/videoSRC09/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>32×/C16 — videoSRC09 Zero Spatial</strong></div>
+  </div>
+</div>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/32x_ch16/videoSRC10/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>32×/C16 — videoSRC10 Normal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/32x_ch16/videoSRC10/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>32×/C16 — videoSRC10 Zero Temporal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/32x_ch16/videoSRC10/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>32×/C16 — videoSRC10 Zero Spatial</strong></div>
+  </div>
+</div>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/32x_ch16/videoSRC14/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>32×/C16 — videoSRC14 Normal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/32x_ch16/videoSRC14/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>32×/C16 — videoSRC14 Zero Temporal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/32x_ch16/videoSRC14/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>32×/C16 — videoSRC14 Zero Spatial</strong></div>
+  </div>
+</div>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/32x_ch16/videoSRC18/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>32×/C16 — videoSRC18 Normal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/32x_ch16/videoSRC18/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>32×/C16 — videoSRC18 Zero Temporal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/32x_ch16/videoSRC18/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>32×/C16 — videoSRC18 Zero Spatial</strong></div>
+  </div>
+</div>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/32x_ch16/videoSRC22/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>32×/C16 — videoSRC22 Normal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/32x_ch16/videoSRC22/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>32×/C16 — videoSRC22 Zero Temporal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/32x_ch16/videoSRC22/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>32×/C16 — videoSRC22 Zero Spatial</strong></div>
+  </div>
+</div>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/32x_ch16/videoSRC23/normal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>32×/C16 — videoSRC23 Normal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/32x_ch16/videoSRC23/zero_temporal.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>32×/C16 — videoSRC23 Zero Temporal</strong></div>
+  </div>
+  <div class="video-card">
+    <video controls loop muted preload="metadata"><source src="videos/32x_ch16/videoSRC23/zero_spatial.mp4" type="video/mp4"></video>
+    <div class="caption"><strong>32×/C16 — videoSRC23 Zero Spatial</strong></div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>
