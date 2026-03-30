@@ -14,8 +14,12 @@ h3{font-size:1.15rem;margin:24px 0 8px;color:#0f3460}
 h4{font-size:1rem;margin:16px 0 6px;color:#334155}
 p{font-size:.95rem;color:#495057;margin-bottom:12px}
 .subtitle{color:#6c757d;font-size:1rem;margin-bottom:24px}
-.video-container{margin:12px 0 24px;background:#000;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+.video-container{margin:12px 0 24px;background:#000;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.12);position:relative;cursor:pointer}
 .video-container video{width:100%;display:block}
+.video-container .play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;background:rgba(0,0,0,.55);border:none;border-radius:50%;cursor:pointer;display:none;align-items:center;justify-content:center;transition:opacity .2s;z-index:2}
+.video-container .play-btn svg{fill:#fff;width:28px;height:28px}
+.video-container:hover .play-btn{opacity:.9}
+.video-container.paused .play-btn{display:flex}
 .section-desc{font-size:.92rem;color:#64748b;margin-bottom:16px}
 footer{margin-top:40px;color:#adb5bd;font-size:.8rem;text-align:center}
 </style>
@@ -84,15 +88,28 @@ footer{margin-top:40px;color:#adb5bd;font-size:.8rem;text-align:center}
 <p class="section-desc">Labels: ARVAE (Ours) · ARVAE (Ours) #2 · DIGAN · DIGAN #2</p>
 <div class="video-container"><video autoplay loop muted playsinline preload="auto"><source src="iclr_video/merged/gen_taichi.mp4" type="video/mp4"></video></div>
 
-<h2>Zero-Out Test</h2>
-<p class="section-desc">Zero-out test on videoSRC05 (8× ch4). Labels: Normal · Zero Temporal · Zero Spatial.</p>
-<div class="video-container"><video autoplay loop muted playsinline preload="auto"><source src="iclr_video/merged/zero_out_test.mp4" type="video/mp4"></video></div>
-
-<h2>Latent Swap Test</h2>
-<p class="section-desc">Latent swap test (8× ch4). Labels: Swap Temporal · Swap Spatial.</p>
-<div class="video-container"><video autoplay loop muted playsinline preload="auto"><source src="iclr_video/merged/latent_swap_test.mp4" type="video/mp4"></video></div>
-
 <footer>Anonymous supplementary material</footer>
 </div>
+<script>
+document.querySelectorAll('.video-container').forEach(function(container) {
+  var video = container.querySelector('video');
+  var btn = document.createElement('button');
+  btn.className = 'play-btn';
+  btn.innerHTML = '<svg viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20"/></svg>';
+  container.appendChild(btn);
+
+  function togglePlay() {
+    if (video.paused) {
+      video.play();
+      container.classList.remove('paused');
+    } else {
+      video.pause();
+      container.classList.add('paused');
+    }
+  }
+
+  container.addEventListener('click', togglePlay);
+});
+</script>
 </body>
 </html>
