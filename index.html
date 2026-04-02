@@ -21,6 +21,10 @@ p{font-size:.95rem;color:#495057;margin-bottom:12px}
 .video-container:hover .play-btn{opacity:.9}
 .video-container.paused .play-btn{display:flex}
 .section-desc{font-size:.92rem;color:#64748b;margin-bottom:16px}
+.side-by-side{display:flex;gap:16px;margin:12px 0 24px}
+.side-by-side .video-cell{flex:1;min-width:0}
+.side-by-side .video-cell .video-container{margin:0}
+.side-by-side .video-label{font-size:.85rem;color:#64748b;text-align:center;margin-bottom:6px;font-weight:600}
 footer{margin-top:40px;color:#adb5bd;font-size:.8rem;text-align:center}
 </style>
 </head>
@@ -28,6 +32,33 @@ footer{margin-top:40px;color:#adb5bd;font-size:.8rem;text-align:center}
 <div class="container">
 <h1>ARVAE Supplementary Visual Results</h1>
 <p class="subtitle">Supplementary Video Results — Reconstruction &amp; Generation</p>
+
+<h2>ARVAE 8×8 Reconstructed Samples (High Resolution)</h2>
+<p class="section-desc">8×8 spatiotemporal downsampling reconstruction results. Each clip shows Ground Truth (left) and ARVAE reconstruction (right) side by side.</p>
+
+<h3>Clip 1</h3>
+<div class="side-by-side">
+<div class="video-cell"><div class="video-label">Ground Truth</div><div class="video-container"><video autoplay loop muted playsinline preload="auto"><source src="iclr_video/high_res_results/clip1/ori.mp4" type="video/mp4"></video></div></div>
+<div class="video-cell"><div class="video-label">ARVAE (Ours)</div><div class="video-container"><video autoplay loop muted playsinline preload="auto"><source src="iclr_video/high_res_results/clip1/recon.mp4" type="video/mp4"></video></div></div>
+</div>
+
+<h3>Clip 2</h3>
+<div class="side-by-side">
+<div class="video-cell"><div class="video-label">Ground Truth</div><div class="video-container"><video autoplay loop muted playsinline preload="auto"><source src="iclr_video/high_res_results/clip2/ori.mp4" type="video/mp4"></video></div></div>
+<div class="video-cell"><div class="video-label">ARVAE (Ours)</div><div class="video-container"><video autoplay loop muted playsinline preload="auto"><source src="iclr_video/high_res_results/clip2/recon.mp4" type="video/mp4"></video></div></div>
+</div>
+
+<h3>Clip 3</h3>
+<div class="side-by-side">
+<div class="video-cell"><div class="video-label">Ground Truth</div><div class="video-container"><video autoplay loop muted playsinline preload="auto"><source src="iclr_video/high_res_results/clip3/ori.mp4" type="video/mp4"></video></div></div>
+<div class="video-cell"><div class="video-label">ARVAE (Ours)</div><div class="video-container"><video autoplay loop muted playsinline preload="auto"><source src="iclr_video/high_res_results/clip3/recon.mp4" type="video/mp4"></video></div></div>
+</div>
+
+<h3>Clip 4</h3>
+<div class="side-by-side">
+<div class="video-cell"><div class="video-label">Ground Truth</div><div class="video-container"><video autoplay loop muted playsinline preload="auto"><source src="iclr_video/high_res_results/clip4/ori.mp4" type="video/mp4"></video></div></div>
+<div class="video-cell"><div class="video-label">ARVAE (Ours)</div><div class="video-container"><video autoplay loop muted playsinline preload="auto"><source src="iclr_video/high_res_results/clip4/recon.mp4" type="video/mp4"></video></div></div>
+</div>
 
 <h2>ARVAE 8× Reconstructed Samples</h2>
 <p class="section-desc">Comparison of 8× temporal downsampling reconstruction results. Labels: Ground Truth · ARVAE (Ours) · CogVideoX · VideoVAEPlus · VidTok.</p>
